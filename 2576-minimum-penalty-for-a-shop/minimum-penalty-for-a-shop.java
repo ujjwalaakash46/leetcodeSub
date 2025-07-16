@@ -18,8 +18,6 @@ class Solution {
 
         int max=Integer.MAX_VALUE;
         int ind = 0;
-        print(op);
-        print(cl);
         for(int i=0; i<cl.length; i++){
             int ss = op[i] + cl[i];
 
@@ -30,14 +28,6 @@ class Solution {
         }
 
         return ind;
-
-    }
-
-    public void print(int[] ss){
-        for(int s: ss){
-            System.out.print(s);
-        }
-        System.out.println();
 
     }
 }
