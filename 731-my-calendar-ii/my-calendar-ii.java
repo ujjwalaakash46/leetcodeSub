@@ -10,19 +10,22 @@ class MyCalendarTwo {
         mp.put(startTime, mp.getOrDefault(startTime, 0)+1);
         mp.put(endTime, mp.getOrDefault(endTime, 0)-1);
         int sum = 0;
-        boolean f = false;
         for( Integer k : mp.keySet()){
             sum +=mp.get(k);
             if(sum>2){
-                f=true;
-                break;
-            } 
-        }
+                mp.put(startTime, mp.get(startTime) - 1);
+                // If the value becomes 0, remove the key to keep the map clean
+                if (mp.get(startTime) == 0) {
+                    mp.remove(startTime);
+                }
 
-        if(f){
-            mp.put(startTime, mp.getOrDefault(startTime, 0)-1);
-            mp.put(endTime, mp.getOrDefault(endTime, 0)+1);
-            return false;
+                mp.put(endTime, mp.get(endTime) + 1);
+                // If the value becomes 0, remove the key
+                if (mp.get(endTime) == 0) {
+                    mp.remove(endTime);
+                }
+                return false;
+            } 
         }
         return true;
     }
