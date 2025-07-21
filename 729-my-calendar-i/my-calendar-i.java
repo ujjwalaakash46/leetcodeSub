@@ -8,14 +8,18 @@ class MyCalendar {
     
     public boolean book(int startTime, int endTime) {
         
-        for (Integer[] existingBooking : st) {
-            int existingStartTime = existingBooking[0];
-            int existingEndTime = existingBooking[1];
-            if (startTime < existingEndTime && endTime > existingStartTime) {
-                return false; // Overlap detected, cannot book
-            }
+        Integer[] newInterval = new Integer[]{startTime, endTime};
+        Integer[] prevBooking = st.floor(newInterval);
+        Integer[] nextBooking = st.ceiling(newInterval);
+        if (prevBooking != null && startTime < prevBooking[1]) {
+            return false; // Overlap detected with previous booking
         }
-        st.add(new Integer[]{startTime, endTime});
+
+        if (nextBooking != null && endTime > nextBooking[0]) {
+            return false; // Overlap detected with next booking
+        }
+
+        st.add(newInterval);
         return true;
     }
 }
