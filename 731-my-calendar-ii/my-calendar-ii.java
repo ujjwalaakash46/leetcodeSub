@@ -1,9 +1,9 @@
 class MyCalendarTwo {
 
-    TreeMap<Integer, Integer> mp = new TreeMap<>();
+    TreeMap<Integer, Integer> mp;
 
     public MyCalendarTwo() {
-        
+        mp = new TreeMap<>();
     }
     
     public boolean book(int startTime, int endTime) {
