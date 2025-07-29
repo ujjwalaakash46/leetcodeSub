@@ -1,7 +1,6 @@
 class SeatManager {
 
     Queue<Integer> qu = new PriorityQueue<>();
-    // int s=0;
     public SeatManager(int n) {
         for(int i=1; i<=n;i++){
             qu.add(i);
