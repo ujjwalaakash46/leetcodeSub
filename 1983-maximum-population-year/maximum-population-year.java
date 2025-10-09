@@ -1,7 +1,5 @@
 class Solution {
     public int maximumPopulation(int[][] logs) {
-        int year = Integer.MIN_VALUE;
-        int max = Integer.MIN_VALUE;
         TreeMap<Integer, Integer> mp = new TreeMap<>();
 
         for(int[] p : logs){
@@ -9,17 +7,17 @@ class Solution {
             mp.put(p[1], mp.getOrDefault(p[1], 0)-1);
         }
 
-        int lm=0;
-        for(Integer k: mp.keySet()){
-            lm += mp.get(k);
-            if(lm>max){
-                max=lm;
-                year=k;
+        int mx = Integer.MIN_VALUE;
+        int mx_c = Integer.MIN_VALUE;
+        int mxyear = 0;
+        for(Map.Entry<Integer, Integer> en: mp.entrySet()){
+            mx_c+=en.getValue();
+            if(mx_c>mx){
+                mx=mx_c;
+                mxyear=en.getKey();
             }
         }
 
-
-
-        return year;
+        return mxyear;
     }
 }
