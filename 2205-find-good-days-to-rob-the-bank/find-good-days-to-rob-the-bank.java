@@ -25,9 +25,6 @@ class Solution {
             }
         }
 
-        System.out.println(Arrays.toString(leftgr));
-        System.out.println(Arrays.toString(rightgr));
-
         for(int i =t; i< s.length-t; i++){
             if(leftgr[i]>=t && rightgr[i]>=t){
                 res.add(i);
