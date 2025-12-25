@@ -1,15 +1,18 @@
 class Solution {
-    public int jump(int[] nums) {
-        int jumps = 0, farthest = 0, end = 0;         
-
-        // Walk through all blocks except the last one
-        for (int i = 0; i < nums.length - 1; i++) {
-            farthest = Math.max(farthest, i + nums[i]); 
-            if (i == end) {
-                jumps++;       
-                end = farthest; 
+    public int jump(int[] n) {
+        if(n.length==1) return 0;
+        int nextMaxIRange = 0, steps = 0, lastRange=0;
+        
+        for(int i=0; i<n.length-1; i++){
+            nextMaxIRange= Math.max(nextMaxIRange, i + n[i]);
+            if(i == lastRange){
+                steps++;
+                lastRange = nextMaxIRange;
             }
-        }
-        return jumps; 
+        }    
+
+
+        return steps;
     }
 }
+
