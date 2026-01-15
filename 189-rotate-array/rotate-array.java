@@ -1,24 +1,20 @@
 class Solution {
     public void rotate(int[] nums, int k) {
-        int[] og = nums.clone();
-        int len = nums.length;
-        int ro = k%len;
-        
-        int i=0, j=0;
-        while(ro>i){
-            nums[i]=og[len+i-ro];
-            i++;
-        }
-        while(i<len){
-            nums[i]=og[j];
-            i++;
-            j++;
-        }
+        int n = nums.length;
+        int[] newN = new int[n];
 
-        // while(i<len){
-        //     nums[i]=og[k - len + i];
-        //     i++;
-        // }
+        k = k % n;
 
+        for(int i=0; i<n; i++){
+            if(k<=i){
+                newN[i]= nums[i-k];
+            }else{
+                newN[i]= nums[n-k+i];
+            }
+        }
+        for(int i=0; i<n; i++){
+            nums[i]=newN[i];
+
+        }
     }
 }
